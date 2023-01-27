@@ -6,6 +6,11 @@ class App < Sinatra::Base
     erb :index
   end
 
+  get '/error' do 
+    status 404
+    erb:error 
+  end
+
   post '/calculate' do
     calculator = Calculator.new
     operation = params[:operation]
@@ -20,7 +25,14 @@ class App < Sinatra::Base
     when "x"
       @result = calculator.multiply(input_one, input_two).result
     when "/"
-      @result = calculator.divide(input_one, input_two).result
+      begin
+        if input_one == 0 || input_two == 0
+          raise ZeroDivisionError, "Cannot divide by zero!"
+        end
+        @result = calculator.divide(input_one, input_two).result
+      rescue ZeroDivisionError
+        redirect '/error'
+      end
     end
     if @result.round == @result
       @result = @result.to_i

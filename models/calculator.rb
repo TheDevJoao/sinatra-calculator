@@ -19,6 +19,9 @@ class Calculator
   end
 
   def divide(input_one, input_two)
+    if input_one == 0 || input_two == 0
+      raise ZeroDivisionError, "Cannot divide by zero!"
+    end
     @result = input_one / input_two
     self
   end
