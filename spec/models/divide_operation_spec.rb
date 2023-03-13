@@ -9,6 +9,14 @@ RSpec.describe DivideOperation do
         result = divide.operate(6, 2)
         expect(result).to eq(3)
       end
+
+      it 'and denominator is zero' do
+        expect { divide.operate(3, 0) }.to raise_error(ZeroDivisionError, 'Cannot divide by zero!')
+      end
+
+      it 'and both numerator and denomitator are zero' do
+        expect { divide.operate(0, 0) }.to raise_error(ArgumentError, 'Both operands cannot be zero!')
+      end
     end
 
     context 'when dividing two negative numbers' do
