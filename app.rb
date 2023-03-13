@@ -2,10 +2,6 @@ require 'sinatra'
 require_relative './models/calculator'
 require_relative './models/operation'
 require_relative './models/operation_factory'
-require_relative './models/sum_operation'
-require_relative './models/subtract_operation'
-require_relative './models/multiply_operation'
-require_relative './models/divide_operation'
 
 class App < Sinatra::Base
   get '/' do
@@ -17,8 +13,8 @@ class App < Sinatra::Base
     input_two = params[:input_two]
     operation_symbol = params[:operation]
 
-    unless input_one.match(/^\d*\.?\d+$/) && input_two.match(/^\d*\.?\d+$/)
-      @error = 'Please enter valid numbers only'
+    unless input_one.match?(Calculator::VALID_INPUT) && input_two.match?(Calculator::VALID_INPUT)
+      @error_message = 'Please enter valid numbers only'
       return erb :index
     end
 

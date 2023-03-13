@@ -5,8 +5,8 @@
   <div>
     <h1>SINATRA ERB CALCULATOR</h1>
     <form class="calculator-container" action='/calculate' method='post'>
-      <% if @error %>
-        <p> <%= @error %> </p>
+      <% if @error_message %>
+        <p> <%= @error_message %> </p>
       <% end %>
       <input placeholder="Number 1" name='input_one' value='<%= @result %>'/> <br> <br>
       <input placeholder="Number 2" name='input_two'/>
