@@ -1,0 +1,22 @@
+<head>
+  <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div>
+    <h1>SINATRA ERB CALCULATOR</h1>
+    <form class="calculator-container" action='/calculate' method='post'>
+      <% if @error_message %>
+        <p> <%= @error_message %> </p>
+      <% end %>
+      <input placeholder="Number 1" name='input_one' value='<%= @result %>'/> <br> <br>
+      <input placeholder="Number 2" name='input_two'/>
+      <br><br>
+      <button name='operation' value='+'>+</button>
+      <button name='operation' value='-'>-</button>
+      <button name='operation' value='x'>x</button>
+      <button name='operation' value='/'>/</button>
+      <br><br>
+      <input class="result" readonly placeholder="Result" value='<%= @result %>'>
+    </form>
+  </div>
+</body>

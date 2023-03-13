@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "FiraCode";
+  src: url(font/Fira\ Code\ Light\ Nerd\ Font\ Complete.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'FiraCode', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+div {
+  text-align: center;
+}
+
+input {
+  font-size: 16px;
+  padding: 5px;
+}
+
+h1 {
+  letter-spacing: 2px;
+}
+
+button {
+  margin: 0 5px;
+  padding: 3px;
+  width: 45px;
+  cursor: pointer;
+}
+
+.calculator-container {
+  margin-top: 10px;
+}
+
+.result {
+  text-align: center;
+}
