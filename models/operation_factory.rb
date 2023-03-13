@@ -1,16 +1,20 @@
+require_relative 'sum_operation'
+require_relative 'subtract_operation'
+require_relative 'multiply_operation'
+require_relative 'divide_operation'
+
 class OperationFactory
+  OPERATIONS = {
+    '+': SumOperation,
+    '-': SubtractOperation,
+    'x': MultiplyOperation,
+    '/': DivideOperation
+  }
+
   def self.create_operation(operation_symbol)
-    case operation_symbol
-    when '+'
-      SumOperation.new
-    when '-'
-      SubtractOperation.new
-    when 'x'
-      MultiplyOperation.new
-    when '/'
-      DivideOperation.new
-    else
-      raise ArgumentError, "Invalid operation: #{operation_symbol}"
-    end
+    operation = OPERATIONS[operation_symbol.to_sym]
+    raise ArgumentError, "Invalid operation: #{operation_symbol}" unless operation
+
+    operation.new
   end
 end

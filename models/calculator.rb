@@ -1,4 +1,6 @@
 class Calculator
+  VALID_INPUT = /^-?\d*\.?\d+$/
+
   def initialize(operation)
     @operation = operation
   end
